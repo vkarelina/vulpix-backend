@@ -3,6 +3,11 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Dialect } from 'sequelize';
 
+import { User } from './models/user.model';
+import { Post } from './models/post.model';
+import { Tag } from './models/tag.model';
+import { PostTag } from './models/post-tags.model';
+
 @Module({
   controllers: [],
   providers: [],
@@ -17,7 +22,7 @@ import { Dialect } from 'sequelize';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      models: [],
+      models: [User, Post, Tag, PostTag],
     }),
   ],
 })
