@@ -21,7 +21,7 @@ interface PostCreactionAttrs {
   picture?: string;
 }
 
-@Table({ tableName: 'Posts' })
+@Table({ tableName: 'Posts', underscored: true })
 export class Post extends Model<Post, PostCreactionAttrs> {
   @ForeignKey(() => User)
   @Column

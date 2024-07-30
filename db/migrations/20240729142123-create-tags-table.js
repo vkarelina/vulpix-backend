@@ -8,19 +8,18 @@ module.exports = {
         allowNull: false,
       },
       name: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING(255),
         allowNull: false,
         validate: {
           notEmpty: true,
-          len: [1, 255],
         },
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,

@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         validate: {
           notNull: true,
-          len: [4, 100],
+          len: [4, 25],
         },
       },
       email: {
@@ -28,23 +28,19 @@ module.exports = {
         allowNull: false,
         validate: {
           notNull: true,
-          len: [4, 100],
+          len: [8, 255],
         },
       },
-      avatarPath: {
-        type: Sequelize.DataTypes.STRING,
+      avatar_path: {
+        type: Sequelize.DataTypes.STRING(255),
         allowNull: true,
-        validate: {
-          notNull: true,
-          len: [0, 255],
-        },
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,

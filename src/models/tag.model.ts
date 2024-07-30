@@ -15,7 +15,7 @@ interface TagCreactionAttrs {
   name: string;
 }
 
-@Table({ tableName: 'Tags' })
+@Table({ tableName: 'Tags', underscored: true })
 export class Tag extends Model<Tag, TagCreactionAttrs> {
   @AllowNull(false)
   @Column

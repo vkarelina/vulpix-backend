@@ -7,7 +7,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.DataTypes.INTEGER,
       },
-      postId: {
+      post_id: {
         type: Sequelize.DataTypes.INTEGER,
         references: {
           model: 'Posts',
@@ -19,7 +19,7 @@ module.exports = {
           isEmail: true,
         },
       },
-      tagId: {
+      tag_id: {
         type: Sequelize.DataTypes.INTEGER,
         references: {
           model: 'Tags',

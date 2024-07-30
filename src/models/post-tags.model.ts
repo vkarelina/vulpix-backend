@@ -3,7 +3,7 @@ import { Column, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { Post } from './post.model';
 import { Tag } from './tag.model';
 
-@Table({ tableName: 'PostTags', timestamps: false })
+@Table({ tableName: 'PostTags', timestamps: false, underscored: true })
 export class PostTag extends Model<PostTag> {
   @ForeignKey(() => Post)
   @Column

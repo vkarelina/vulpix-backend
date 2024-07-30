@@ -18,7 +18,7 @@ interface UserCreactionAttrs {
   avatar?: string;
 }
 
-@Table({ tableName: 'Users' })
+@Table({ tableName: 'Users', underscored: true })
 export class User extends Model<User, UserCreactionAttrs> {
   @AllowNull(false)
   @Column

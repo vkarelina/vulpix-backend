@@ -7,7 +7,7 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      userId: {
+      user_id: {
         type: Sequelize.DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -21,11 +21,10 @@ module.exports = {
         },
       },
       title: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.STRING(255),
         allowNull: false,
         validate: {
           notEmpty: true,
-          len: [1, 255],
         },
       },
       description: {
@@ -35,19 +34,16 @@ module.exports = {
           notEmpty: true,
         },
       },
-      picturePath: {
-        type: Sequelize.DataTypes.STRING,
+      picture_path: {
+        type: Sequelize.DataTypes.STRING(255),
         allowNull: true,
-        validate: {
-          len: [1, 255],
-        },
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DataTypes.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,
