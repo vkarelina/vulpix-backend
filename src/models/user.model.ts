@@ -9,7 +9,7 @@ import {
   UpdatedAt,
 } from 'sequelize-typescript';
 
-import { Post } from './post.model';
+import { Post } from '../modules/posts/models/post.model';
 
 interface UserCreactionAttrs {
   name: string;
