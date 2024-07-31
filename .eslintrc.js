@@ -11,6 +11,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
+    'plugin:import/typescript',
   ],
   root: true,
   env: {
@@ -26,16 +27,19 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: [['builtin', 'external', 'internal']],
+        groups: [
+          ['builtin', 'external'],
+          ['internal', 'parent', 'sibling', 'index']
+        ],
         'newlines-between': 'always',
         pathGroups: [
           {
-            pattern: 'react',
+            pattern: '@nestjs/**',
             group: 'external',
             position: 'before',
           },
         ],
-        pathGroupsExcludedImportTypes: ['react'],
+        pathGroupsExcludedImportTypes: ['builtin'],
       },
     ],
     'prettier/prettier': ['error'],
