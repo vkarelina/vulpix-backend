@@ -8,7 +8,6 @@ export class PostsController {
 
   @Get()
   getAllPosts() {
-    const posts = this.postsService.getAllPosts();
-    return posts;
+    return this.postsService.getAllPosts();
   }
 }

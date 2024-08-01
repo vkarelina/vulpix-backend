@@ -11,6 +11,7 @@ export class PostsService {
 
   async getAllPosts() {
     const posts = await this.postRepository.findAll({
+      attributes: { exclude: ['updatedAt', 'createdAt'] },
       include: [
         {
           model: User,
@@ -25,6 +26,7 @@ export class PostsService {
         },
       ],
     });
+
     return posts;
   }
 }
