@@ -13,7 +13,7 @@ import {
 
 import { Tag } from './tag.model';
 import { PostTag } from './post-tags.model';
-import { User } from './user.model';
+import { User } from '../../../models/user.model';
 
 interface PostCreactionAttrs {
   title: string;

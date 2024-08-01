@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+
 import { Dialect } from 'sequelize';
 
 import { User } from './models/user.model';
-import { Post } from './models/post.model';
-import { Tag } from './models/tag.model';
-import { PostTag } from './models/post-tags.model';
+import { Post } from './modules/posts/models/post.model';
+import { Tag } from './modules/posts/models/tag.model';
+import { PostTag } from './modules/posts/models/post-tags.model';
+import { PostsModule } from './modules/posts/posts.module';
 
 @Module({
   controllers: [],
@@ -24,6 +26,7 @@ import { PostTag } from './models/post-tags.model';
       database: process.env.DB_NAME,
       models: [User, Post, Tag, PostTag],
     }),
+    PostsModule,
   ],
 })
 export class AppModule {}
