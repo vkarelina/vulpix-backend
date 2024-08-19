@@ -27,7 +27,7 @@ export class PostsService {
       ],
     });
 
-    if (!posts) throw new NotFoundException('Error: Not found posts');
+    if (!posts) throw new NotFoundException('Not found posts');
 
     return posts;
   }

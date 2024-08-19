@@ -24,20 +24,24 @@ export class AuthService {
     return { token };
   }
 
-  async registration(userDto: CreateUserDto) {
+  async register(userDto: CreateUserDto) {
     const candidate = await this.userService.getUserByEmail(userDto.email);
 
     if (candidate) {
       throw new ConflictException('User with this email already exists');
     }
 
-    const hashPassword = await bcrypt.hash(userDto.password, 5);
+    const costFactor = Number(process.env.COST_FACTOR);
+
+    const hashPassword = await bcrypt.hash(userDto.password, costFactor);
+
     const user = await this.userService.createUser({
       ...userDto,
       password: hashPassword,
     });
 
     const token = this.generateToken(user);
+
     return token;
   }
 
@@ -58,6 +62,6 @@ export class AuthService {
       return user;
     }
 
-    throw new UnauthorizedException({ message: 'Incorrect email or password' });
+    throw new UnauthorizedException('Incorrect email or password');
   }
 }

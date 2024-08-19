@@ -8,8 +8,8 @@ import { User } from './models/user.model';
 export class UsersService {
   constructor(@InjectModel(User) private userRepository: typeof User) {}
 
-  async createUser(dto: CreateUserDto) {
-    const user = await this.userRepository.create(dto);
+  async createUser(createUserdto: CreateUserDto) {
+    const user = await this.userRepository.create(createUserdto);
 
     if (!user) {
       throw new BadRequestException('Failed create user');
@@ -31,5 +31,11 @@ export class UsersService {
   async getUserByEmail(email: string) {
     const user = await this.userRepository.findOne({ where: { email } });
     return user;
+  }
+
+  async getUserById(id: number) {
+    return await this.userRepository.findByPk(id, {
+      attributes: { exclude: ['password'] },
+    });
   }
 }
