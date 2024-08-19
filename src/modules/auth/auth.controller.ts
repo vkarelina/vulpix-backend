@@ -3,7 +3,7 @@ import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { JwtAuthGuard } from './jwt-auth.guard';
-import { RequestWithUser } from '../users/users.controller';
+import { RequestWithUser } from '../users/types';
 
 @Controller('auth')
 export class AuthController {
@@ -19,8 +19,8 @@ export class AuthController {
     return this.authService.register(createUserDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('whoami')
+  @UseGuards(JwtAuthGuard)
   whoami(@Req() req: RequestWithUser) {
     return req.user;
   }

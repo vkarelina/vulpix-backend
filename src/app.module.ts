@@ -13,15 +13,12 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
-  controllers: [],
-  providers: [],
   imports: [
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
     }),
     SequelizeModule.forRootAsync({
-      imports: [],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         dialect: configService.get<Dialect>('DB_DIALECT'),
