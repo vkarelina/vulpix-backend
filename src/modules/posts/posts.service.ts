@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
-import { User } from './../../models/user.model';
+import { User } from '../users/models/user.model';
 import { Post } from './models/post.model';
 import { Tag } from './models/tag.model';
 
@@ -26,6 +26,8 @@ export class PostsService {
         },
       ],
     });
+
+    if (!posts) throw new NotFoundException('Not found posts');
 
     return posts;
   }

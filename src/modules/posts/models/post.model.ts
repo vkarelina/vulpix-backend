@@ -11,9 +11,9 @@ import {
   UpdatedAt,
 } from 'sequelize-typescript';
 
+import { User } from '../../users/models/user.model';
 import { Tag } from './tag.model';
 import { PostTag } from './post-tags.model';
-import { User } from '../../../models/user.model';
 
 interface PostCreactionAttrs {
   title: string;
