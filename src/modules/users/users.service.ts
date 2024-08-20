@@ -19,18 +19,13 @@ export class UsersService {
   }
 
   async getAllUsers() {
-    const users = await this.userRepository.findAll();
-
-    if (!users) {
-      throw new BadRequestException('Failed get users');
-    }
-
-    return users;
+    return await this.userRepository.findAll({
+      attributes: { exclude: ['password'] },
+    });
   }
 
   async getUserByEmail(email: string) {
-    const user = await this.userRepository.findOne({ where: { email } });
-    return user;
+    return await this.userRepository.findOne({ where: { email } });
   }
 
   async getUserById(id: number) {
